@@ -109,6 +109,7 @@ int	shell_loop(char	**argv, char	**env)
 	char	*line_read;
 	char	**cmd;
 	int	status;
+	int	i;
 
 	cmd = NULL;
 	line_read = NULL;
@@ -130,7 +131,19 @@ int	shell_loop(char	**argv, char	**env)
 		{
 			continue;
 		}
-		status = execution(cmd, argv, env);
+		if (!ft_strcmp(cmd[0], "env"))
+		{
+			i = 0;
+			while (env[i])
+			{
+				write(1, env[i], ft_strlen(env[i]));
+				write(1, "\n", 1);
+				i++;
+			}
+			free_args(cmd);
+		}
+		else
+			status = execution(cmd, argv, env);
 	}
 }
 /**

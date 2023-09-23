@@ -21,5 +21,4 @@ char *path_find(char *command, char **env);
 void ft_error(char *str, char *error, int i);
 char	*ft_strcpy(char *dest, char *src);
 
-
 #endif
